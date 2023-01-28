@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
     @State private var score: Int = 0
-    @State private var questions = false
+    @State private var resetAlert = false
     @State private var questionsAsked = 1
     
     
@@ -72,7 +72,7 @@ struct ContentView: View {
         } message: {
             Text("Your score is: \(score)")
         }
-        .alert("Final score", isPresented: $questions) {
+        .alert("Final score", isPresented: $resetAlert) {
             Button("Reset", action: reset)
         } message: {
             Text("Your final score is \(score)!")
@@ -97,7 +97,7 @@ struct ContentView: View {
             questionsAsked += 1
         }
         else {
-            questions = true
+            resetAlert = true
         }
     }
     
